@@ -16,9 +16,10 @@ int install(void)
 {
         char *home  = forge_cstr_builder("$DESTDIR/home/", get_prev_user(), NULL);
         char *vimrc = forge_cstr_builder(home, "/.vimrc", NULL);
+        char *mkd   = forge_cstr_builder("mkdir -p ", home, NULL);
         char *cp    = forge_cstr_builder("cp ./.vimrc ", vimrc, NULL);
 
-        mkdirp(home);
+        CMD(mkd, return 0);
 
         CMD(cp, {
                 free(home);
@@ -29,6 +30,7 @@ int install(void)
 
         free(home);
         free(vimrc);
+        free(mkd);
         free(cp);
 
         return 1;
