@@ -2,6 +2,15 @@
 
 #include <stdio.h>
 
+char *msgs[] = {
+        "Make sure to chown -R <user>:<user> " YELLOW BOLD "$HOME/.emacs.d " RESET "!",
+        "",
+        "Uninstalling this package will remove all currently installed",
+        "Emacs packages as well as custom-set-variables, so be careful.",
+        NULL,
+};
+
+char **getmsgs(void) { return msgs; }
 char *getname(void) { return "malloc-nbytes@init-el"; }
 char *getver(void)  { return "rolling"; }
 char *getdesc(void) { return "My Emacss config"; }
@@ -56,6 +65,7 @@ FORGE_GLOBAL pkg package = {
         .ver             = getver,
         .desc            = getdesc,
         .web             = getweb,
+        .msgs            = getmsgs,
         .deps            = NULL,
         .download        = download,
         .build           = NULL,
