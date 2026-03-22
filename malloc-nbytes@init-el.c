@@ -3,8 +3,7 @@
 #include <stdio.h>
 
 char *msgs[] = {
-        "Make sure to chown -R <user>:<user> " YELLOW BOLD "$HOME/.emacs.d " RESET "!",
-        "",
+        "Make sure to: `" YELLOW BOLD "chown -R <user>:<user> $HOME/.emacs.d" RESET "' !",
         "Uninstalling this package will remove all currently installed",
         "Emacs packages as well as custom-set-variables, so be careful.",
         NULL,
