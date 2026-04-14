@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 char *msgs[] = {
-        "This is a simple version of my Emacs config."
-        "There are no packages that need to be installed."
+        "This is a simple version of my Emacs config.",
+        "There are no packages that need to be installed.",
         "To install this for a user, you must install this",
         "package through 'sudo' or 'doas'. If you are root and",
         "install this package, it will be installed to /root.",
