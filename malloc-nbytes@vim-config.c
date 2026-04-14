@@ -2,6 +2,14 @@
 
 #include <stdio.h>
 
+char *msgs[] = {
+        "To install this for a user, you must install this",
+        "package through 'sudo' or 'doas'. If you are root and",
+        "install this package, it will be installed to /root.",
+        NULL,
+};
+
+char **getmsgs(void) { return msgs; }
 char *getname(void) { return "malloc-nbytes@vim-config"; }
 char *getver(void)  { return "1.0.0"; }
 char *getdesc(void) { return "My Vim config"; }
@@ -42,6 +50,7 @@ FORGE_GLOBAL pkg package = {
         .desc            = getdesc,
         .web             = getweb,
         .deps            = NULL,
+        .msgs            = getmsgs,
         .download        = download,
         .build           = NULL,
         .install         = install,
