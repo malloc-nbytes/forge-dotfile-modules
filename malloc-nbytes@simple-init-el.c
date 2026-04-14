@@ -15,9 +15,9 @@ char *msgs[] = {
 };
 
 char **getmsgs(void) { return msgs; }
-char *getname(void) { return "malloc-nbytes@init-el"; }
+char *getname(void) { return "malloc-nbytes@simple-init-el"; }
 char *getver(void)  { return "rolling"; }
-char *getdesc(void) { return "My Emacss config"; }
+char *getdesc(void) { return "A Simple Emacs config"; }
 char *getweb(void)  { return "https://www.github.com/malloc-nbytes/init.el.git/"; }
 
 char *
