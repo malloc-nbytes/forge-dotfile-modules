@@ -42,6 +42,7 @@ install(void)
 
         CMD(mkd, return 0);
         CMD(mkde, return 0);
+        CMD(mkdt, return 0);
 
         CMD(cp, {
                 free(home);
