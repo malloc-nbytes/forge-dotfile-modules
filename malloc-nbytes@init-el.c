@@ -6,7 +6,6 @@ char *msgs[] = {
         "To install this for a user, you must install this",
         "package through 'sudo' or 'doas'. If you are root and",
         "install this package, it will be installed to /root.",
-        "\n",
         "Make sure to: `" YELLOW BOLD "chown -R <user>:<user> $HOME/.emacs.d" RESET "' !",
         "Uninstalling this package will remove all currently installed",
         "Emacs packages as well as custom-set-variables, so be careful.",
