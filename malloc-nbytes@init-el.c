@@ -27,13 +27,16 @@ download(void)
 int
 install(void)
 {
-        char *user   = get_prev_user();
-        char *home   = forge_cstr_builder("$DESTDIR/home/", user, NULL);
-        char *emacsd = forge_cstr_builder(home, "/.emacs.d", NULL);
-        char *mkd    = forge_cstr_builder("mkdir -p ", home, NULL);
-        char *mkde   = forge_cstr_builder("mkdir -p ", emacsd, NULL);
-        char *cp     = forge_cstr_builder("cp ./init.el ./config.org ", emacsd, NULL);
-        char *chown  = forge_cstr_builder("chown -R ", user, ":", user, " ", emacsd, NULL);
+        char *user    = get_prev_user();
+        char *home    = forge_cstr_builder("$DESTDIR/home/", user, NULL);
+        char *emacsd  = forge_cstr_builder(home, "/.emacs.d", NULL);
+        char *themesd = forge_cstr_builder(home, "/.emacs.d/themes", NULL);
+        char *mkd     = forge_cstr_builder("mkdir -p ", home, NULL);
+        char *mkde    = forge_cstr_builder("mkdir -p ", emacsd, NULL);
+        char *mkdt    = forge_cstr_builder("mkdir -p ", themesd, NULL);
+        char *cp      = forge_cstr_builder("cp ./init.el ./config.org ", emacsd, NULL);
+        char *chown   = forge_cstr_builder("chown -R ", user, ":", user, " ", emacsd, NULL);
+        char *cp2     = forge_cstr_builder("cp themes/* ", themesd, NULL);
 
         CMD(mkd, return 0);
         CMD(mkde, return 0);
@@ -42,6 +45,16 @@ install(void)
                 free(home);
                 free(emacsd);
                 free(cp);
+                free(cp2);
+                free(chown);
+                return 0;
+        });
+
+        CMD(cp2, {
+                free(home);
+                free(emacsd);
+                free(cp);
+                free(cp2);
                 free(chown);
                 return 0;
         });
@@ -58,6 +71,7 @@ install(void)
         free(emacsd);
         free(mkd);
         free(cp);
+        free(cp2);
 
         return 1;
 }
