@@ -26,8 +26,6 @@ download(void)
 int
 build(void)
 {
-        int ok = 1;
-
         // NOTE: hack
         char *src = "/var/cache/forge/sources/dwm-6.8.0";
 
@@ -39,21 +37,12 @@ build(void)
         char *patch2 = forge_cstr_builder("patch -p1 < ", awesomebar, NULL);
 
         CD(src, return 0);
-        char *orig_config_data = forge_io_read_file_to_cstr("./config.h");
         CMD(cp_config, return 0);
 
         CMD(patch1, return 0);
         CMD(patch2, return 0);
 
-        if (!make(NULL)) {
-                ok = 0;
-                goto restore_config;
-        }
-
-restore_config:
-        (void)forge_io_write_file("./config.h", orig_config_data);
-
-        return ok;
+        return make(NULL);
 }
 
 int
