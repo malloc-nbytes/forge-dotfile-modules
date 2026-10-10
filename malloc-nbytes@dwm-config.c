@@ -6,7 +6,8 @@ char *deps[] = { "suckless@dwm-6.8.0", NULL };
 
 char *msgs[] = {
         "You must have the main repository installed for forge",
-        "unless you have a package to install dwm-6.8 called `suckless@dwm-6.8.0`",
+        "unless you have a package to install dwm-6.8 called `suckless@dwm-6.8.0`.",
+        "This will edit the source code of the currently installed dwm.",
         NULL,
 };
 
@@ -48,6 +49,9 @@ build(void)
 int
 install(void)
 {
+        // NOTE: hack
+        char *src = "/var/cache/forge/sources/dwm-6.8.0";
+        CD(src, return 0);
         return make("install");
 }
 
