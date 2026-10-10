@@ -40,8 +40,10 @@ build(void)
         CD(src, return 0);
         CMD(cp_config, return 0);
 
+        printf("============ PATCHING ============\n");
         CMD(patch1, return 0);
         CMD(patch2, return 0);
+        printf("============== DONE ==============\n");
 
         return make(NULL);
 }
