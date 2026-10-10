@@ -34,7 +34,7 @@ install(void)
 
         char *mkd    = forge_cstr_builder("mkdir -p ", nvim, NULL);
         char *cp     = forge_cstr_builder("cp -r ./* ", nvim, NULL);
-        char *_chown = forge_cstr_builder("chown -R", user, ":", user, " ", nvim, NULL);
+        char *_chown = forge_cstr_builder("chown -R ", user, ":", user, " ", nvim, NULL);
 
         CMD(mkd,    {ok = 0; goto cleanup;});
         CMD(cp,     {ok = 0; goto cleanup;});
