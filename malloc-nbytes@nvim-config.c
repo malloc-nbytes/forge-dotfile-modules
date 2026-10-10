@@ -33,7 +33,7 @@ install(void)
         char *nvim   = forge_cstr_builder(config, "/nvim", NULL);
 
         char *mkd    = forge_cstr_builder("mkdir -p ", nvim, NULL);
-        char *cp     = forge_cstr_builder("cp -r ./*", nvim, NULL);
+        char *cp     = forge_cstr_builder("cp -r ./* ", nvim, NULL);
         char *_chown = forge_cstr_builder("chown ", user, ":", user, nvim, NULL);
 
         CMD(mkd,    {ok = 0; goto cleanup;});
