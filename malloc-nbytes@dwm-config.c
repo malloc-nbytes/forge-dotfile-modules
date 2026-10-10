@@ -31,10 +31,10 @@ build(void)
         // NOTE: hack
         char *src = "/var/cache/forge/sources/dwm-6.8.0";
 
-        char *config = forge_io_resolve_absolute_path("./config.h");
+        char *config = forge_io_resolve_absolute_path("./dwm-6.8");
         char *fullgaps = forge_io_resolve_absolute_path("./02-dwm-fullgaps-6.4.diff");
         char *awesomebar = forge_io_resolve_absolute_path("./03-dwm-awesomebar-6.6.diff");
-        char *cp_config = forge_cstr_builder("cp ", config, " ", ".", NULL);
+        char *cp_config = forge_cstr_builder("cp ", config, " ", "./config.h", NULL);
         char *patch1 = forge_cstr_builder("patch -p1 < ", fullgaps, NULL);
         char *patch2 = forge_cstr_builder("patch -p1 < ", awesomebar, NULL);
 
