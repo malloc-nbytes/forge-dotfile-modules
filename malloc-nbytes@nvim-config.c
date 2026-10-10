@@ -29,8 +29,8 @@ install(void)
         const char *user = get_prev_user();
 
         char *home   = forge_cstr_builder("$DESTDIR/home/", user, NULL);
-        char *config = forge_cstr_builder(home, "/.config/");
-        char *nvim   = forge_cstr_builder(config, "/nvim");
+        char *config = forge_cstr_builder(home, "/.config/", NULL);
+        char *nvim   = forge_cstr_builder(config, "/nvim", NULL);
 
         char *mkd    = forge_cstr_builder("mkdir -p ", nvim, NULL);
         char *cp     = forge_cstr_builder("cp -r ./*", nvim, NULL);
