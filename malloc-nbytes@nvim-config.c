@@ -6,6 +6,7 @@ char *msgs[] = {
         "To install this for a user, you must install this",
         "package through 'sudo' or 'doas'. If you are root and",
         "install this package, it will be installed to /root.",
+        "Make sure to: `" YELLOW BOLD "chown -R $USER:$USER $HOME/.config/nvim" RESET "' !",
         NULL,
 };
 
