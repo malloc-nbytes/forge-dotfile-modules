@@ -22,26 +22,27 @@ char *download(void)
 
 int install(void)
 {
-        char *home  = forge_cstr_builder("$DESTDIR/home/", get_prev_user(), NULL);
-        char *tmux  = forge_cstr_builder(home, "/.tmux.conf", NULL);
-        char *mkd   = forge_cstr_builder("mkdir -p ", home, NULL);
-        char *cp    = forge_cstr_builder("cp ./.tmux.conf ", tmux, NULL);
+        int ok = 1;
+        const char *user = get_prev_user();
 
-        CMD(mkd, return 0);
+        char *home   = forge_cstr_builder("$DESTDIR/home/", get_prev_user(), NULL);
+        char *tmux   = forge_cstr_builder(home, "/.tmux.conf", NULL);
+        char *mkd    = forge_cstr_builder("mkdir -p ", home, NULL);
+        char *cp     = forge_cstr_builder("cp ./.tmux.conf ", tmux, NULL);
+        char *_chown = forge_cstr_builder("chown -R ", user, ":", user, " ", tmux, NULL);
 
-        CMD(cp, {
-                free(home);
-                free(tmux);
-                free(cp);
-                return 0;
-        });
+        CMD(mkd,    {ok = 0; goto cleanup;});
+        CMD(cp,     {ok = 0; goto cleanup;});
+        CMD(_chown, {ok = 0; goto cleanup;});
 
+cleanup:
         free(home);
         free(tmux);
         free(mkd);
         free(cp);
+        free(_chown);
 
-        return 1;
+        return ok;
 }
 
 FORGE_GLOBAL pkg package = {
