@@ -32,9 +32,9 @@ install(void)
         char *config = forge_cstr_builder(home, "/.config/", NULL);
         char *i3     = forge_cstr_builder(config, "/i3", NULL);
 
-        char *mkd    = forge_cstr_builder("mkdir -p ", nvim, NULL);
-        char *cp     = forge_cstr_builder("cp -r ./* ", nvim, NULL);
-        char *_chown = forge_cstr_builder("chown -R ", user, ":", user, " ", nvim, NULL);
+        char *mkd    = forge_cstr_builder("mkdir -p ", i3, NULL);
+        char *cp     = forge_cstr_builder("cp -r ./* ", i3, NULL);
+        char *_chown = forge_cstr_builder("chown -R ", user, ":", user, " ", i3, NULL);
 
         CMD(mkd,    {ok = 0; goto cleanup;});
         CMD(cp,     {ok = 0; goto cleanup;});
@@ -43,7 +43,7 @@ install(void)
  cleanup:
         free(home);
         free(config);
-        free(nvim);
+        free(i3);
         free(mkd);
         free(cp);
         free(_chown);
