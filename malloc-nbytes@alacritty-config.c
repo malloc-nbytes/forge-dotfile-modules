@@ -10,15 +10,15 @@ char *msgs[] = {
 };
 
 char **getmsgs(void) { return msgs; }
-char *getname(void) { return "malloc-nbytes@nvim-config"; }
+char *getname(void) { return "malloc-nbytes@alacritty-config"; }
 char *getver(void)  { return "1.0.0"; }
-char *getdesc(void) { return "My Neovim config"; }
+char *getdesc(void) { return "My Alacritty config"; }
 char *getweb(void)  { return "https://www.github.com/malloc-nbytes/alacritty-config.git/"; }
 
 char *
 download(void)
 {
-        return git_clone("malloc-nbytes", "alacritty-config-config");
+        return git_clone("malloc-nbytes", "alacritty-config");
 }
 
 int
