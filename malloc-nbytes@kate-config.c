@@ -21,14 +21,17 @@ install(void)
         char *kated   = forge_cstr_builder(home, "/.local/share/org.kde.syntax-highlighting", NULL);
         char *mkd     = forge_cstr_builder("mkdir -p ", kated, NULL);
         char *mv      = forge_cstr_builder("cp -r ./themes ", kated, NULL);
+        char *chwn    = forge_cstr_builder("chown -R ", user, ":", user, " ", kated, NULL);
 
         CMD(mkd, {ok = 0; goto done;});
         CMD(mv, {ok = 0; goto done;});
+        CMD(chwn, {ok = 0; goto done;});
 done:
         free(home);
         free(kated);
         free(mkd);
         free(mv);
+        free(chwn);
 
         return ok;
 }
